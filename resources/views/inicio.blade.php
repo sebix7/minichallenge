@@ -7,7 +7,7 @@
 
     <ul>
         @forelse($operaciones as $operacion)
-            <li>{{$operacion["title"]}}</li>
+            <li>{{$operacion->monto}}</li>
         @empty
             <li>No hay operaciones</li>
         @endforelse

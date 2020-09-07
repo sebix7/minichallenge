@@ -11,29 +11,12 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/', function(){
-    echo "<a href='" . route("contacto") . "'>Contacto 1</a><br>";
-    echo "<a href='" . route("contacto") . "'>Contacto 2</a><br>";
-    echo "<a href='" . route("contacto") . "'>Contacto 3</a><br>";
-    echo "<a href='" . route("contacto") . "'>Contacto 4</a><br>";
-    echo "<a href='" . route("contacto") . "'>Contacto 5</a><br>";
-});
-
-Route::get('contactame', function(){
-    return "Sección de Contacto";
-})->name("contacto");
-
-Route::get('saludo/{nombre?}', function($nombre = "Anonimo"){
-    return "Saludos, " . $nombre;
-});
-
 */
 
-Route::view("/operaciones", "operaciones")->name("operaciones");
+Route::get("/operacion", "OperacionController@create")->name("operacion.create");
+Route::post("/operacion", "OperacionController@store")->name("operacion.store");
 Route::get("/", "InicioController@index")->name("inicio");
-Route::post("operaciones", "MensajeController@store");
+Route::get("/operacion/listar", "OperacionController@index")->name("operacion.index");
+Route::get("/operacion/{id}/editar", "OperacionController@show")->name("operacion.show");
+Route::patch("/operacion/{id}/editar", "OperacionController@update")->name("operacion.update");
+
